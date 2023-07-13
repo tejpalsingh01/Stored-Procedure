@@ -1,0 +1,27 @@
+create table Rdp_NEOM_APP_TEST2(dep_id int , departmentName nchar(255), Batchno nchar(255));
+INSERT INTO Rdp_NEOM_APP_TEST2
+VALUES (1, 'A','23');
+Select * from rdp_neom_app_test1;
+Select * from rdp_neom_app_test2;
+
+CREATE or Alter PROCEDURE InsertData
+    @dep_id INT,
+    @departmentName VARCHAR(50),
+    @department VARCHAR(50),
+	@id INT,
+    @empName VARCHAR(50),
+    @Batchno VARCHAR(50)
+AS
+BEGIN
+--Insert into table 1
+    INSERT INTO rdp_neom_app_test1(
+id, empName, department)
+    VALUES (@id, @empName, @department);
+	--Insert into table 2
+    INSERT INTO rdp_neom_app_test2(
+dep_id, departmentName, Batchno)
+    VALUES (@dep_id, @departmentName, @Batchno);
+END;
+
+
+exec InsertData @dep_id  =2,@departmentName = 'b',@Batchno = '34', @id = 2,@empName = 'mach',@department = '32';
